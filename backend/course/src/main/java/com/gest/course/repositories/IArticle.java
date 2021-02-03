@@ -6,6 +6,7 @@ import com.gest.course.entities.Category;
 import com.gest.course.entities.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -14,7 +15,8 @@ public interface IArticle extends JpaRepository<Article, Long> {
     List<Article> findByCategory(Category category);
     List<Article> findByCheckedAndUser(boolean checked, User user);
     List<Article> findByUser(User user);
-
+    //List<Article> findByUserAndDate(User user, Date date);
+    //List<Article> findByDate(Date date);
     List<Article> findByChecked(boolean checked);
 
 }

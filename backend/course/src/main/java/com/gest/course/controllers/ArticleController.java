@@ -12,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 
@@ -87,6 +88,16 @@ public class ArticleController {
 
         return ResponseEntity.ok("article updated");
     }
+  /*  @GetMapping("/article/{dateAchat}")
+    public ResponseEntity findArticleByDate(@PathVariable(name = "dateAchat") Date dateAchat){
+        if (dateAchat == null) {
+            return ResponseEntity.badRequest().body("Cannot find article with null date");
+        }
+        List<Article> artdt = articleRepository.findByDate(dateAchat);
+        return ResponseEntity.ok(artdt);
+
+
+    }*/
 
     @GetMapping("/check/{idArticle}/{isChecked}")
     public ResponseEntity checkedArticle(@PathVariable(name = "idArticle") Long idArticle, @RequestParam(name = "isChecked", required = false) boolean isChecked) {

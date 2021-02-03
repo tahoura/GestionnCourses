@@ -59,19 +59,19 @@ public class UserController {
         return ResponseEntity.ok(createdUser);
     }
     */
-  @PostMapping("/new")
-    public ResponseEntity createUser(@RequestParam("file") MultipartFile file, @RequestParam("user") User user) throws IOException {
+  @PostMapping(value="/new",consumes=MediaType.MULTIPART_FORM_DATA_VALUE)
+    public ResponseEntity createUser(@RequestPart("file") MultipartFile file,  @RequestPart User user) throws IOException {
         if(file.isEmpty()) {
-           return ResponseEntity.notFound().build();
+            return ResponseEntity.notFound().build();
         }
 //Il faut récupérer l'utilisateur ou l'entite de la BD
-      /*  User user= userRepository.getOne();
+       /* User user= userRepository.findById(idUser).get();
         if (user == null) {
-            return ResponseEntity.notFound().build();
+            return "No user were foud with the specefic ID";
         }*/
         user.setPhoto(file.getBytes());
         userRepository.save(user);
-        return ResponseEntity.ok("user insert");
+      return ResponseEntity.ok("user insert");
     }
 
     @PostMapping("/login")
@@ -135,5 +135,6 @@ public class UserController {
         User createdUser = userRepository.save(user);
         return ResponseEntity.ok(createdUser);
     }
+
 
 }

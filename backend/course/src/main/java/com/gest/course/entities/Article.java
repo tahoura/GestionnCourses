@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.Date;
 import java.util.List;
 
 
@@ -23,7 +24,7 @@ public class Article implements Serializable {
     private BigDecimal tauxTva;
 
     private BigDecimal prixUnitaireTTC;
-
+private Date dateAchat;
     @Lob
     private byte[] photo;
 
@@ -88,6 +89,14 @@ public class Article implements Serializable {
         this.prixUnitaireTTC = prixUnitaireTTC;
     }
 
+    public Date getDateAchat() {
+        return dateAchat;
+    }
+
+    public void setDateAchat(Date dateAchat) {
+        this.dateAchat = dateAchat;
+    }
+
     public byte[] getPhoto() {
         return photo;
     }
@@ -128,5 +137,7 @@ public class Article implements Serializable {
     public void setCategory(Category category) {
         this.category = category;
     }
+
+
 }
 
